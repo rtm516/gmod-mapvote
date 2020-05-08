@@ -14,24 +14,24 @@ MapVoteConfigDefault = {
 }
 --Default Config
 
-hook.Add( "Initialize", "MapVoteConfigSetup", function()
-    if not file.Exists( "mapvote", "DATA") then
-        file.CreateDir( "mapvote" )
+hook.Add("Initialize", "MapVoteConfigSetup", function()
+    if not file.Exists("mapvote", "DATA") then
+        file.CreateDir("mapvote")
     end
-    if not file.Exists( "mapvote/config.txt", "DATA" ) then
-        file.Write( "mapvote/config.txt", util.TableToJSON( MapVoteConfigDefault ) )
+    if not file.Exists("mapvote/config.txt", "DATA") then
+        file.Write("mapvote/config.txt", util.TableToJSON(MapVoteConfigDefault))
     end
-end )
+end)
 
 function MapVote.HasExtraVotePower(ply)
-	-- Example that gives admins more voting power
-	--[[
+    -- Example that gives admins more voting power
+    --[[
     if ply:IsAdmin() then
-		return true
-	end 
+        return true
+    end 
     ]]
 
-	return false
+    return false
 end
 
 
