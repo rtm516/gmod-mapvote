@@ -30,6 +30,13 @@ function RTV.Start()
         hook.Add("TTTEndRound", "MapvoteDelayed", function()
             MapVote.Start(nil, nil, nil, nil)
         end)
+    elseif GAMEMODE_NAME == "prop_hunt" then
+        net.Start("RTV_Delay")
+        net.Broadcast()
+
+        hook.Add("PHEndRound", "MapvoteDelayed", function()
+            MapVote.Start(nil, nil, nil, nil)
+        end)
     elseif GAMEMODE_NAME == "deathrun" then
         net.Start("RTV_Delay")
         net.Broadcast()

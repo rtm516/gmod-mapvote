@@ -31,7 +31,9 @@ else
     recentmaps = {}
 end
 
-if file.Exists("mapvote/config.txt", "DATA") then
+if file.Exists("mapvote/config_" .. engine.ActiveGamemode() .. ".txt", "DATA") then
+    MapVote.Config = util.JSONToTable(file.Read("mapvote/config_" .. engine.ActiveGamemode() .. ".txt", "DATA"))
+elseif file.Exists("mapvote/config.txt", "DATA") then
     MapVote.Config = util.JSONToTable(file.Read("mapvote/config.txt", "DATA"))
 else
     MapVote.Config = {}
@@ -190,9 +192,9 @@ function MapVote.Start(length, current, limit, prefix, callback)
 end
 
 hook.Add("Shutdown", "RemoveRecentMaps", function()
-        if file.Exists("mapvote/recentmaps.txt", "DATA") then
-            file.Delete("mapvote/recentmaps.txt")
-        end
+    if file.Exists("mapvote/recentmaps.txt", "DATA") then
+        file.Delete("mapvote/recentmaps.txt")
+    end
 end)
 
 function MapVote.Cancel()
