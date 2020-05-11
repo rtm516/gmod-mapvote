@@ -47,6 +47,12 @@ hook.Add("Initialize", "AutoTTTMapVote", function()
         end
     end
 
+    if GAMEMODE_NAME == "murder" then
+        function GAMEMODE:ChangeMap()
+            MapVote.Start(nil, nil, nil, nil)
+        end
+    end
+
     if GAMEMODE_NAME == "deathrun" then
         function RTV.Start()
             MapVote.Start(nil, nil, nil, nil)
